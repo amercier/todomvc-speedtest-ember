@@ -1,5 +1,5 @@
 {
-  "name": "todomvc-ember-cli",
+  "name": "todomvc-speedtest-ember",
   "private": true,
   "scripts": {
     "start": "ember server",

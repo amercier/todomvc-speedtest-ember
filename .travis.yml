@@ -6,8 +6,8 @@ cache:
   - node_modules
 env:
   global:
-  - GH_REF=github.com/amercier/todomvc-ember-cli.git
-  - secure: "MxJ1skvAEWjJ8UrnjyY/reD+c22bIJnJ/qkpskhXjMD+6/0IaOR89tkx66zJYzAETL4IsroORZO0LZiG52Uplhc66l9h4UjEsJ3zIxImb9WBLW0uTs4M8SbYaj1w80e3/BQVRPfonq10K9EEAzf0cwtWw3OzVzn895kE9UIhs0Q="
+  - GH_REF=github.com/amercier/todomvc-speedtest-ember.git
+  - secure: "LWhmBtGYthLGCNj7P0x2zzMJRl6r8xERCx7OL5NZ7V2u5Zrv6Wa/WdIVWxxq3dKgHyJr2KffSJae3N1MEj+X0+WgOE3ve/2tcRQWRakNtMKlJDxLVZa3farSlvLxcQbDsgmqXC0UtGnNMbL2H8U3E1W0eSoEG9EoNC674K7pLtU="
 after_success:
-- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" && ./build.sh dist /todomvc-ember-cli || echo "Pull request. Skipping build" >&2
+- test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" && ./build.sh dist /todomvc-speedtest-ember || echo "Pull request. Skipping build" >&2
 - test "$TRAVIS_PULL_REQUEST" = "false" && test "$TRAVIS_BRANCH" = "master" && ./deploy.sh dist || echo "Pull request. Skipping deployment" >&2
