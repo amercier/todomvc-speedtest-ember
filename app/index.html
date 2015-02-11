@@ -11,10 +11,14 @@
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/todomvc-speedtest-ember.css">
+    <script>
+      startTime = new Date().getTime();
+      function elapsedTime() {
+        return Math.max(0, new Date().getTime() - startTime);
+      }
+    </script>
   </head>
   <body>
-    {{content-for 'body'}}
-
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -23,9 +27,20 @@
 
       ga('create', 'UA-59621410-1', 'auto');
       ga('send', 'pageview');
+      ga('send', 'timing', 'Page loading', 'HTML body', elapsedTime());
     </script>
+
+    {{content-for 'body'}}
 
     <script src="assets/vendor.js"></script>
     <script src="assets/todomvc-speedtest-ember.js"></script>
+    <script>
+      $(document).ready(function() {
+        ga('send', 'timing', 'Page loading', 'DOM ready', elapsedTime());
+      });
+      $(document).load(function() {
+        ga('send', 'timing', 'Page loading', 'Page loaded', elapsedTime());
+      });
+    </script>
   </body>
 </html>
