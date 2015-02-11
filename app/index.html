@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="assets/todomvc-speedtest-ember.css">
     <script>
       startTime = new Date().getTime();
-      function elapsedTime() {
-        return Math.max(0, new Date().getTime() - startTime);
+      function reportUserTiming(title) {
+        setTimeout(function() {
+          ga('send', 'timing', 'Page loading', title, Math.max(0, new Date().getTime() - startTime));
+        }, 0);
       }
     </script>
   </head>
@@ -27,7 +29,7 @@
 
       ga('create', 'UA-59621410-1', 'auto');
       ga('send', 'pageview');
-      ga('send', 'timing', 'Page loading', 'HTML body', elapsedTime());
+      reportUserTiming('HTML body');
     </script>
 
     {{content-for 'body'}}
@@ -36,10 +38,10 @@
     <script src="assets/todomvc-speedtest-ember.js"></script>
     <script>
       $(document).ready(function() {
-        ga('send', 'timing', 'Page loading', 'DOM ready', elapsedTime());
+        reportUserTiming('DOM ready');
       });
       $(document).load(function() {
-        ga('send', 'timing', 'Page loading', 'Page loaded', elapsedTime());
+        reportUserTiming('Page loaded');
       });
     </script>
   </body>
